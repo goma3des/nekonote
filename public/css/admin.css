@@ -59,6 +59,6 @@ body {
 .evaluation label:hover,
 .evaluation label:hover ~ label,
 .evaluation input[type=radio]:checked ~ label {
-  color: #ffcc00;
+  color: #000;
 }
 
