@@ -1,0 +1,24 @@
+body {
+  background-repeat: no-repeat;
+  background-position: center;
+  background-color: #f8fafc;
+  color: #212529;
+}
+.navbar-brand {
+  color: #fff !important;
+}
+
+.nav-link {
+  color: #fff !important;
+}
+
+.flex-container {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.flex-item {
+  width: 400px;
+  width: calc(100%/3);
+  flex-basis: auto;
+}

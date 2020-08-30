@@ -1,0 +1,64 @@
+body {
+  background-repeat: no-repeat;
+  background-position: center;
+  background-color: #f8fafc;
+  color: #212529;
+}
+
+.navbar-laravel {
+  background-color: #f8fafc;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
+}
+
+.navbar-brand {
+  color: #fff !important;
+}
+
+.nav-link {
+  color: #fff !important;
+}
+
+.table-dark {
+  color: #212529;
+}
+
+.list-group-item {
+  border-color: #212529;
+  background-color: #f8fafc;
+}
+
+.login-box {
+  background-color: rgba(0, 0, 0, 0.03);
+}
+
+.login-header {
+  background-color: rgba(0, 0, 0, 0.03);
+}
+
+.login-body {
+  background-color: #fff;
+}
+
+.evaluation {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: flex-end;
+}
+
+.evaluation input[type=radio] {
+  display: none;
+}
+
+.evaluation label {
+  position: relative;
+  color: gray;
+  cursor: pointer;
+  font-size: 25px;
+}
+
+.evaluation label:hover,
+.evaluation label:hover ~ label,
+.evaluation input[type=radio]:checked ~ label {
+  color: #ffcc00;
+}
+
