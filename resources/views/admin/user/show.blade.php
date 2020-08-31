@@ -17,7 +17,7 @@
         @if (empty($user->image_path))
           <img src="https://nekonote-sharing.s3-ap-northeast-1.amazonaws.com/neko.jpg" class="img-fluid img-responsive">
         @else
-          <img src="{{ $user->image_path }}" class="img-fluid img-responsive">
+          <img src="{{ 'https://nekonote-sharing.s3-ap-northeast-1.amazonaws.com/' . $user->image_path }}" class="img-fluid img-responsive">
         @endif
       </div>
       <div class="user-info col-md-8">
