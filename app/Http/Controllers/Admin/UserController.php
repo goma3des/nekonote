@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Hash;
 use App\User;
 use App\Order;
 use Carbon\Carbon;
+use Storage;
 
 class UserController extends Controller
 {
@@ -54,8 +55,10 @@ class UserController extends Controller
 //      $user->password = Hash::make($request->password);
       if (isset($user_form['image'])) {
 //        if($request->file('image')->isValid()){
-          $path = $request->file('image')->store('public/image');
-          $user->image_path = basename($path);
+//          $path = $request->file('image')->store('public/image');  テスト環境下のコード
+//          $user->image_path = basename($path);
+          $path = Storage::disk('s3')->putFile('/',$user_form['image'],'public');
+          $user->image_path = Storage::disk('s3')->url($path);
           unset($user_form['image']);
         // }
       } elseif (0 == strcmp($request->remove, 'true')) {
