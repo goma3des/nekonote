@@ -37,8 +37,7 @@ class OrderController extends Controller
 
     $order->fill($form);
     $order->save();
-
-    return redirect('/');
+    return redirect()->action('Admin\OrderController@show', ['id' => $order->id]);
   }
 
 
