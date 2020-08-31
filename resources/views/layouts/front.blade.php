@@ -56,7 +56,7 @@
                 @if (empty(Auth::user()->image_path))
                   <a class="nav-link" href="{{ action('Admin\UserController@show', ['id' => Auth::user()->id]) }}"><img src="https://nekonote-sharing.s3-ap-northeast-1.amazonaws.com/neko.jpg" style="width:25px;height:25px" class="rounded-circle">{{ Auth::user()->name }}</a>
                 @else
-                  <a class="nav-link" href="{{ action('Admin\UserController@show', ['id' => Auth::user()->id]) }}"><img src="{{ Auth::user()->image_path }}" style="width:25px;height:25px" class="rounded-circle">{{ Auth::user()->name }}</a>
+                  <a class="nav-link" href="{{ action('Admin\UserController@show', ['id' => Auth::user()->id]) }}"><img src="{{ 'https://nekonote-sharing.s3-ap-northeast-1.amazonaws.com/' . Auth::user()->image_path }}" style="width:25px;height:25px" class="rounded-circle">{{ Auth::user()->name }}</a>
                 @endif
               </li>
               <li>
