@@ -80,7 +80,11 @@
               @foreach($orders as $order)
                 <tr>
                   <td><a href="{{ action('Admin\OrderController@show', ['id' => $order->id ]) }}">{{ $order->title }}</a></td>
-                  <td>{{ $order_name[$loop->index]['name'] }}</td>
+                  <td>
+                    @if (!empty($order_name[$loop->index]['name']))
+                      {{ $order_name[$loop->index]['name'] }}
+                    @endif
+                  </td>
                   <td>
                     @switch($order->status)
                       @case(0)
@@ -123,7 +127,11 @@
               @foreach($accepts as $accept)
                 <tr>
                   <td><a href="{{ action('Admin\OrderController@show', ['id' => $accept->id ]) }}">{{ $accept->title }}</a></td>
-                  <td>{{ $accept_name[$loop->index]['name'] }}</td>
+                  <td>
+                    @if (!empty($accept_name[$loop->index]['name']))
+                      {{ $accept_name[$loop->index]['name'] }}
+                    @endif
+                  </td>
                   <td>
                     @switch($accept->status)
                       @case(0)
