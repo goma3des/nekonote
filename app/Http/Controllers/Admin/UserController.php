@@ -82,11 +82,14 @@ class UserController extends Controller
       $user = User::find($request->id);
       $orders = Order::where('client_id', $user->id)->get();
       $order_name = array();
-      foreach ($orders as $order) {
-//        $array = $order->enabler();
-        // var_dump($array['name']);
-        $order_name[] = $order->enabler();
+      if($orders != null) {
+        foreach ($orders as $order) {
+  //        $array = $order->enabler();
+          // var_dump($array['name']);
+          $order_name[] = $order->enabler();
+        }  
       }
+
       $accepts = Order::where('enabler_id', $user->id)->get();
       $accept_name = array();
       foreach ($accepts as $accept) {
