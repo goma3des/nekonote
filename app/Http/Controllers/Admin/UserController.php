@@ -52,7 +52,11 @@ class UserController extends Controller
       $this->validate($request, User::$rules);
       $user = User::find($request->id);
       $user_form = $request->all();
-//      $user->password = Hash::make($request->password);
+      if ($user_form['password'] != $user->password)
+        {
+          $user->password = Hash::make($request->password);
+          unset($user_form['password']);
+        }
       if (isset($user_form['image'])) {
 //        if($request->file('image')->isValid()){
 //          $path = $request->file('image')->store('public/image');  テスト環境下のコード
@@ -66,7 +70,6 @@ class UserController extends Controller
       }
 
       unset($user_form['_token']);
-      unset($user_form['password']);
 
       $user->fill($user_form)->save();
 
@@ -79,17 +82,17 @@ class UserController extends Controller
       $user = User::find($request->id);
       $orders = Order::where('client_id', $user->id)->get();
       $order_name = array();
-//       foreach ($orders as $order) {
-// //        $array = $order->enabler();
-//         // var_dump($array['name']);
-//         $order_name[] = $order->enabler();
-//       }
+      foreach ($orders as $order) {
+//        $array = $order->enabler();
+        // var_dump($array['name']);
+        $order_name[] = $order->enabler();
+      }
       $accepts = Order::where('enabler_id', $user->id)->get();
       $accept_name = array();
-      // foreach ($accepts as $accept) {
-      //   $accept_name[] = $accept->client();
-      // }
-      // $user->point = $user->point + Order::where('client_id', $user->id)->sum('client_eval_point') + Order::where('enabler_id', $user->id)->sum('enabler_eval_point');
+      foreach ($accepts as $accept) {
+        $accept_name[] = $accept->client();
+      }
+      $user->point = $user->point + Order::where('client_id', $user->id)->sum('client_eval_point') + Order::where('enabler_id', $user->id)->sum('enabler_eval_point');
       return view('admin.user.show', ['user' => $user, 'orders' => $orders, 'accepts' => $accepts, 'order_name' => $order_name, 'accept_name' => $accept_name]);
     }
 

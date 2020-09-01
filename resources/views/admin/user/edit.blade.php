@@ -28,6 +28,12 @@
             </div>
           </div>
           <div class="form-group row">
+              <label class="col-md-2" for="password">パスワード</label>
+              <div class="col-md-10">
+                <input type="password" class="form-control" name="password" value="{{ $user->password }}">
+              </div>
+          </div>
+          <div class="form-group row">
             <label class="col-md-2" for="image">画像</label>
             <div class="col-md-10">
               <input type="file" class="form-control-file" name="image" value="{{ $user->image_path }}">
