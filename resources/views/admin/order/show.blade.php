@@ -106,6 +106,7 @@
         @if ($order->client()->id == Auth::user()->id && $order->status == '1')
         <a href="{{ action('Admin\OrderController@evaluate_enabler', ['id' => $order->id]) }}" role="button" class="ml-2 btn btn-secondary">対応者の評価をする</a>
         @elseif ($order->client()->id != Auth::user()->id && !empty($order->enabler()->id) && $order->enabler()->id == Auth::user()->id && $order->status == '1')
+        <a href="{{ action('Admin\OrderController@decline', ['id' => $order->id]) }}" role="button" class="ml-2 btn btn-secondary">辞退する</a>
         <a href="{{ action('Admin\OrderController@evaluate_client', ['id' => $order->id]) }}" role="button" class="ml-2 btn btn-secondary">依頼者の評価をする</a>
         @endif
         <a href="{{ action('MainController@index') }}" role="button" class="ml-2 btn btn-secondary">戻る</a>

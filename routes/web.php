@@ -28,6 +28,7 @@ Route::group(['prefix' => 'admin', 'middleware'=>'auth'], function(){
   Route::get('order/deleteinquiry', 'Admin\OrderController@deleteinquiry');
   Route::get('order/delete', 'Admin\OrderController@delete');
   Route::get('order/accept', 'Admin\OrderController@accept');
+  Route::get('order/decline', 'Admin\OrderController@decline');
   Route::get('order/evaluate_client', 'Admin\OrderController@add_evaluate_client');
   Route::post('order/evaluate_client', 'Admin\OrderController@evaluate_client');
   Route::get('order/evaluate_enabler', 'Admin\OrderController@add_evaluate_enabler');

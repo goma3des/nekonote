@@ -57,7 +57,7 @@
               </td>
             </tbody>
             <tbody>
-              <th width="20%">評価委のポイント</th>
+              <th width="20%">評価のポイント</th>
               <td width="80%">
                 <input type="text" class="form-control" name="client_assessment" value="{{ old('client_assessment') }}">
               </td>

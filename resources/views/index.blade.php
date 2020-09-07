@@ -12,7 +12,6 @@
     <div class="row">
       <div class="flex-container">
         @foreach($orders as $order)
-
         <div class="flex-item">
             <div class="card mr-4 mb-4 shadow-sm">
               <div class="card-body text-dark">
@@ -25,7 +24,7 @@
                     依頼者：<a href="{{ action('Admin\UserController@show', ['id' => $order->client()->id]) }}">{{ $order->client()->name }}</a>
                     @endif
                   </li>
-                  <li>必要とするスキル：{{ $order->required_skill}}</li>
+                  <li>必要とするスキル：{{ $order->required_skill }}</li>
                   <li>期限：{{ $order->deadline }}</li>
                 </ul>
                 @switch ($order->status)
@@ -41,9 +40,7 @@
                 @endswitch
                 <a href="{{ action('Admin\OrderController@show', ['id' => $order->id]) }}" class="pull-right">詳細を見る</a>
               </div>
-
             </div>
-
         </div>
         @endforeach
       </div>

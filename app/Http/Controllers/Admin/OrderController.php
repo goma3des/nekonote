@@ -62,6 +62,7 @@ class OrderController extends Controller
     return redirect()->action('Admin\OrderController@show', ['id' => $request->id]);
   }
 
+
   public function show(Request $request)
   {
     $order = Order::find($request->id);
@@ -106,6 +107,19 @@ class OrderController extends Controller
     $order->save();
 
     return view('admin.order.accept', ['order' => $order]);
+  }
+
+
+  public function decline(Request $request)
+  {
+    $order = Order::find($request->id);
+    $order->status = '0';
+    $order->enabler_id = null;
+    $order->save();
+
+    $messages = Message::all()->sortByDesc('updated_at');
+
+    return view('admin.order.show', ['order' => $order], ['messages' => $messages]);
   }
 
 
