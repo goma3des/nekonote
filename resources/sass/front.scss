@@ -16,15 +16,35 @@ body {
   display: flex;
   flex-wrap: wrap;
   position: relative;
-  justify-content: flex-start;
+  justify-content: space-between;
   align-items: flex-start;
+  width: 100%;
 }
 
 .flex-item {
-  width: 400px;
   width: calc(100%/3);
   flex-basis: auto;
+  height: 300px;
 }
+
+.card-title {
+  height: 40px;
+  text-align: center;
+}
+
+.skill {
+  height: 50px;
+  align-items: center;
+}
+
+@media all and (max-width:768px) {
+  .flex-item {
+  width: calc(100%/2);
+  align-items: flex-start;
+  justify-content: space-between;
+  }
+}
+
 
 @media all and (max-width: 480px) {
   .flex-item {

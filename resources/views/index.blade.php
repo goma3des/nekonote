@@ -13,9 +13,9 @@
       <div class="flex-container">
         @foreach($orders as $order)
         <div class="flex-item">
-            <div class="card mr-4 mb-4 shadow-sm">
+            <div class="card mx-2 shadow-sm">
               <div class="card-body text-dark">
-                <h4 class="card-title">{{ $order->title }}</h4>
+                <h4 class="card-title">{{ Str::limit($order->title, 50) }}</h4>
                 <ul class="list-unstyled mt-3 mb-4">
                   <li>
                     @if (empty($order->client()->name))
@@ -24,7 +24,8 @@
                     依頼者：<a href="{{ action('Admin\UserController@show', ['id' => $order->client()->id]) }}">{{ $order->client()->name }}</a>
                     @endif
                   </li>
-                  <li>必要とするスキル：{{ $order->required_skill }}</li>
+                  <li>必要とするスキル：</li>
+                  <li class="skill">{{ Str::limit($order->required_skill, 90) }}</li>
                   <li>期限：{{ $order->deadline }}</li>
                 </ul>
                 @switch ($order->status)
