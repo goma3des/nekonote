@@ -29,5 +29,6 @@ body {
 @media all and (max-width: 480px) {
   .flex-item {
   width: calc(100%/1);
+  align-items: center;
   }
 }
