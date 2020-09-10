@@ -21,7 +21,7 @@
                     @if (empty($order->client()->name))
                       依頼者：ユーザは不在です。
                     @else
-                    依頼者：<a href="{{ action('Admin\UserController@show', ['id' => $order->client()->id]) }}">{{ $order->client()->name }}<img src="{{ Auth::user()->image_path }}" style="width:25px;height:25px" class="rounded-circle"></a>
+                    依頼者：<a href="{{ action('Admin\UserController@show', ['id' => $order->client()->id]) }}">{{ $order->client()->name }}</a>
                     @endif
                   </li>
                   <li>必要とするスキル：</li>
