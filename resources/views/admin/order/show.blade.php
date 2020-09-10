@@ -8,11 +8,12 @@
       <h3>掲示板詳細情報</h3>
     </div>
     <div class="float-right">
-    @if (Auth::user()->id === $order->client_id)
-      <a href="{{ action('Admin\OrderController@edit', ['id' => $order->id] )}}" role="button" class="btn btn-secondary mb-4 mr-2">編集</a>
-
-      <a href="{{ action('Admin\OrderController@delete', ['id' => $order->id] )}}" role="button" class="btn btn-secondary mb-4">削除</a>
-    @endif
+      @if (!empty(Auth::user()->id))
+        @if (Auth::user()->id === $order->client_id)
+          <a href="{{ action('Admin\OrderController@edit', ['id' => $order->id] )}}" role="button" class="btn btn-secondary mb-4 mr-2">編集</a>
+          <a href="{{ action('Admin\OrderController@delete', ['id' => $order->id] )}}" role="button" class="btn btn-secondary mb-4">削除</a>
+        @endif
+      @endif
     </div>
   </div>
 
@@ -85,10 +86,11 @@
           @foreach ($messages as $message)
             @if (!empty($message) && $message->order_id == $order->id)
               <label class="col-md-10"><a href="{{ action('Admin\UserController@show', ['id'=>$message->user_id]) }}">{{ $message->userid()->name }}</a>さんのコメント 投稿日時：{{ $message->updated_at }}</label>
+              @if (!empty(Auth::user()->id))
                 @if ($message->user_id == Auth::user()->id)
                   <a class="text-right" href="{{ action('Admin\OrderController@deleteinquiry', ['id' => $message->id]) }}">削除</a>
                 @endif
-
+              @endif
             <div class="col-md-11 border rounded mb-3 pt-2 pb-2 bg-white">
               {{ $message->inquiry }}
             </div>
@@ -99,16 +101,18 @@
     </div>
 
 
-    <div class="btn-toolbar float-right mt-4">
+    <div class="btn-toolbar float-right mt-4 mr-4">
+      @if (!empty(Auth::user()->id))
         @if ($order->client()->id != Auth::user()->id && $order->status == '0')
-        <a href="{{ action('Admin\OrderController@accept', ['id' => $order->id]) }}" role="button" class="ml-2 btn btn-secondary">依頼を受ける</a>
+          <a href="{{ action('Admin\OrderController@accept', ['id' => $order->id]) }}" role="button" class="ml-2 btn btn-secondary">依頼を受ける</a>
         @endif
         @if ($order->client()->id == Auth::user()->id && $order->status == '1')
-        <a href="{{ action('Admin\OrderController@evaluate_enabler', ['id' => $order->id]) }}" role="button" class="ml-2 btn btn-secondary">対応者の評価をする</a>
+          <a href="{{ action('Admin\OrderController@evaluate_enabler', ['id' => $order->id]) }}" role="button" class="ml-2 btn btn-secondary">対応者の評価をする</a>
         @elseif ($order->client()->id != Auth::user()->id && !empty($order->enabler()->id) && $order->enabler()->id == Auth::user()->id && $order->status == '1')
-        <a href="{{ action('Admin\OrderController@decline', ['id' => $order->id]) }}" role="button" class="ml-2 btn btn-secondary">辞退する</a>
-        <a href="{{ action('Admin\OrderController@evaluate_client', ['id' => $order->id]) }}" role="button" class="ml-2 btn btn-secondary">依頼者の評価をする</a>
+          <a href="{{ action('Admin\OrderController@decline', ['id' => $order->id]) }}" role="button" class="ml-2 btn btn-secondary">辞退する</a>
+          <a href="{{ action('Admin\OrderController@evaluate_client', ['id' => $order->id]) }}" role="button" class="ml-2 btn btn-secondary">依頼者の評価をする</a>
         @endif
+      @endif
         <a href="{{ action('MainController@index') }}" role="button" class="ml-2 btn btn-secondary">戻る</a>
     </div>
 

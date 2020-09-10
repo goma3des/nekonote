@@ -11,7 +11,7 @@ class MainController extends Controller
 {
     public function index()
     {
-      $orders = Order::all();
+      $orders = Order::all()->sortByDesc('deadline');
 //      $order->client_id = $request->user()->id;
 
 

@@ -33,15 +33,19 @@ body {
 }
 
 .skill {
-  height: 50px;
+  height: 70px;
   align-items: center;
 }
 
-@media all and (max-width:768px) {
+@media all and (max-width:1000px) {
   .flex-item {
   width: calc(100%/2);
   align-items: flex-start;
   justify-content: space-between;
+  margin-bottom: 20px;
+  }
+  .skill {
+    height: 90px;
   }
 }
 

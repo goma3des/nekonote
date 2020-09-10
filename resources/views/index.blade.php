@@ -16,12 +16,12 @@
             <div class="card mx-2 shadow-sm">
               <div class="card-body text-dark">
                 <h4 class="card-title">{{ Str::limit($order->title, 50) }}</h4>
-                <ul class="list-unstyled mt-3 mb-4">
+                <ul class="list-unstyled mt-3 mb-3">
                   <li>
                     @if (empty($order->client()->name))
                       依頼者：ユーザは不在です。
                     @else
-                    依頼者：<a href="{{ action('Admin\UserController@show', ['id' => $order->client()->id]) }}">{{ $order->client()->name }}</a>
+                    依頼者：<a href="{{ action('Admin\UserController@show', ['id' => $order->client()->id]) }}">{{ $order->client()->name }}<img src="{{ Auth::user()->image_path }}" style="width:25px;height:25px" class="rounded-circle"></a>
                     @endif
                   </li>
                   <li>必要とするスキル：</li>

@@ -6,9 +6,11 @@
     <div class="row">
         <h3 class="col-md-6">{{ $user->name }}さんのアカウント</h3>
         <div class=" col-md-6 text-right mb-3">
-          @if (Auth::user()->id === $user->id)
-          <a href="{{ action('Admin\UserController@edit', ['id' => $user->id]) }}" role="button" class="btn btn-secondary">アカウント情報変更</a>
-          <a href="{{ action('Admin\UserController@delete', ['id' => $user->id]) }}" role="button" class="btn btn-secondary">アカウント削除</a>
+          @if (!empty(Auth::user()->id))
+            @if (Auth::user()->id === $user->id)
+              <a href="{{ action('Admin\UserController@edit', ['id' => $user->id]) }}" role="button" class="btn btn-secondary">アカウント情報変更</a>
+              <a href="{{ action('Admin\UserController@delete', ['id' => $user->id]) }}" role="button" class="btn btn-secondary">アカウント削除</a>
+            @endif
           @endif
         </div>
     </div>
@@ -154,7 +156,9 @@
         </div>
       </div>
     </div>
-
+    <div class="btn-toolbar float-right mt-4">
+        <a href="{{ action('MainController@index') }}" role="button" class="ml-2 btn btn-secondary">戻る</a>
+    </div>
   </div>
 
 @endsection
