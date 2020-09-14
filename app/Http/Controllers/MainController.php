@@ -11,7 +11,7 @@ class MainController extends Controller
 {
     public function index()
     {
-      $orders = Order::all()->sortByDesc('updated_at');
+      $orders = Order::all()->sortByDesc('created_at');
 //      $order->client_id = $request->user()->id;
 
 
