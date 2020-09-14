@@ -22,6 +22,12 @@ body {
   width: 100%;
 }
 
+.flex-container::after {
+  content: "";
+  display: block;
+  width: calc(100%/3);
+}
+
 .flex-item {
   width: calc(100%/3);
   flex-basis: auto;
