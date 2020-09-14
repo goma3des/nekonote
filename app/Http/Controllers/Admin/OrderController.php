@@ -144,7 +144,11 @@ class OrderController extends Controller
     $order = Order::find($request->id);
     $order->client_eval_point = $request->client_eval_point;
     $order->client_assessment = $request->client_assessment;
-
+    if (empty($order->enabler_eval_point)) {
+      $order->status = '1';
+    } else {
+      $order->status= '2';
+    }
     $order->save();
 
     return redirect('/');
@@ -164,7 +168,11 @@ class OrderController extends Controller
     $order = Order::find($request->id);
     $order->enabler_eval_point = $request->enabler_eval_point;
     $order->enabler_assessment = $request->enabler_assessment;
-    $order->status = $request->status;
+    if (empty($order->client_eval_point)) {
+      $order->status = '1';
+    } else {
+      $order->status = '2';
+    }
     $order->save();
 
     return redirect('/');

@@ -62,7 +62,7 @@
                 <input type="text" class="form-control" name="enabler_assessment" value="{{ old('enabler_assessment') }}">
               </td>
             </tbody>
-            <tbody>
+            <!-- <tbody>
                 <th width="20%">依頼を終了する</th>
                 <td width="80%">
                     <div class="status text-left">
@@ -72,7 +72,7 @@
                       <label for="no">いいえ</label>
                     </div>
                 </td>
-              </tbody>
+              </tbody> -->
 
             </table>
             <div class="text-right">
